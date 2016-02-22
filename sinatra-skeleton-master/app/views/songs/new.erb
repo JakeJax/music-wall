@@ -1,29 +1,66 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/songs">Music Wall</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <form class="navbar-form navbar-right">
+        <div class="form-group">
+          <input type="text" placeholder="Email" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="Password" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success">Sign in</button>
+      </form>
+    </div><!--/.navbar-collapse -->
+  </div>
+</nav>
 
-<% if @song && @song.errors.any? %>
-  <div>
-    <strong>Some issues with your song, please fix them:</strong>
-    <ul>
-      <% @song.errors.full_messages.each do |song| %>
-        <li><%= song %></li>
+
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="song">
+      <% if @song && @song.errors.any? %>
+        <div>
+          <strong>Some issues with your song, please fix them:</strong>
+          <ul>
+            <% @song.errors.full_messages.each do |song| %>
+              <li><%= song %></li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
-    </ul>
+   
+      <form method="post" action="/songs">
+      <h1>Add A Song</h1>
+        <div>
+          <label>Author:</label>
+          <input type="text" name="author" value=" <%= @song && @song.author %>">
+        </div>
+        <div>
+          <label>Title:</label>
+          <input type="text" name="title" value=" <%= @song && @song.title %>">
+        </div>
+        <div>
+          <label>Link to Song:</label>
+          <input type="text" name="url" value=" <%= @song && @song.url %>">
+        </div>
+        <div>
+          <input type="submit" name="Submit">
+        </div>
+      </form>
+    </div>
+
+    <hr/>
+    <a href="/songs">Back to All Songs</a>  
+    
   </div>
-<% end %>
- 
-<form method="post" action="/songs">
-  <div>
-    <label>Author:</label>
-    <input type="text" name="author" value=" <%= @song && @song.author %>">
-  </div>
-  <div>
-    <label>Title:</label>
-    <input type="text" name="title" value=" <%= @song && @song.title %>">
-  </div>
-  <div>
-    <label>Link to Song:</label>
-    <input type="text" name="url" value=" <%= @song && @song.url %>">
-  </div>
-  <div>
-    <input type="submit" name="Submit">
-  </div>
-</form>
+</div>
