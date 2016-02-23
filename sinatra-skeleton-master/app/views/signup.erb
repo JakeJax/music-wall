@@ -1,0 +1,18 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>Signup</h1>
+
+    <% @user.errors.full_messages.each do |message| %>
+      <%= message%>
+    <% end %>
+
+    <form action="/signup" method="POST">
+      <input name="email" type="text" placeholder="email"  /> <br/>
+      <input name="password" type="text" placeholder="password"  /> <br/>
+      <input name="password_confirmation" type="text" placeholder="confirm password" /> <br/>
+      <input type="submit" value="Submit" />
+    </form>
+
+    <p><a href="/login">Back To Login</a></p>
+  </div>
+</div>
