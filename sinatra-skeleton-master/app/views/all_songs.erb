@@ -1,0 +1,22 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>What's Been Added?</h1>
+    <% @songs.each do |song|%>
+      <div class="song">
+        <h3><a href="/songs/<%= song.id %>"><%= song.title %></a> <small>(by: <%= song.author %>)</small><small>(added: <%= song.created_at.strftime("%b. %d %Y") %>)</small><small>(by: <%= song.music_user %>)</small></h3>
+          <p>
+            <a href="<%= song.url %>" target="_blank">Listen to Song</a> 
+          </p>
+          <form action="/songs/<%= song.id %>/upvotes" method="POST">
+          <input class="upvote_button" type='submit' value='Like'>
+          <p>
+            Likes: <%= song.upvotes || 0 %>
+          </p>
+        </form>
+      </div>
+    <% end %>
+
+    <a href="/songs">Back to My Songs</a><br>
+    <a href="/logout">logout</a>
+  </div>
+</div>

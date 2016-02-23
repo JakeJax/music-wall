@@ -4,14 +4,15 @@
     <h1>Your Song List</h1>
     <% @songs.each do |song|%>
       <div class="song">
-        <h3><a href="/songs/<%= song.id %>"><%= song.title %></a> <small>(by: <%= song.author %>)</small></h3>
-          <p>
-            <a href="<%= song.url %>" target="_blank">Listen to Song</a> 
-          </p>
+        <h3><a href="/songs/<%= song.id %>"><%= song.title %></a> <small>(by: <%= song.author %>)</small><small>(added: <%= song.created_at.strftime("%b. %d %Y") %>)</small></h3>
+        <p>
+          <a href="<%= song.url %>" target="_blank">Listen to Song</a> 
+        </p>
       </div>
     <% end %>
 
     <a href="/songs/new">Add A Song</a><br>
+    <a href="/all_songs">View All Songs</a><br>
     <a href="/logout">logout</a>
   </div>
 </div>
